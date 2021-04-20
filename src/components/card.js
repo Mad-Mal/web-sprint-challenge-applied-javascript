@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,6 +19,25 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  let mainContainer = document.createElement('div')
+  let headDiv = document.createElement('div')
+  let authorDiv = document.createElement('div')
+  let imgContainer = document.createElement('div')
+  let nestedImg = document.createElement('img')
+  let authorsName = document.createElement('span')
+
+  mainContainer.classList.add('card')
+  headDiv.classList.add('headline')
+  authorDiv.classList.add('author')
+  imgContainer.classList.add('img-container')
+  
+  headDiv.textContent = article.headline
+  imgContainer.src = article.authorPhoto
+  authorsName.textContent = `By ${article.authorName}`
+
+  mainContainer.addEventListener('click', event => {
+    console.log(headDiv)
+  })
 }
 
 const cardAppender = (selector) => {
@@ -28,6 +49,40 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  
+  
+//I dont know why this isnt working to be honest, I have walked over it a million times in my head and I cannot figure out why it is not working.
+  axios.get('https://lambda-times-api.herokuapp.com/articles')
+  .then((response) => {
+
+    const newElement = document.querySelector(selector)
+
+    response.data.articles.bootstrap.forEach((article) => {
+      const newArticle = Card(article)
+      newElement.appendChild(newArticle)
+    })
+
+    response.data.articles.javascript.forEach((article) => {
+      const newArticle = Card(article)
+      newElement.appendChild(newArticle)
+    })
+
+    response.data.articles.jquery.forEach((article) => {
+      const newArticle = Card(article)
+      newElement.appendChild(newArticle)
+    })
+
+    response.data.articles.node.forEach((article) => {
+      const newArticle = Card(article)
+      newElement.appendChild(newArticle)
+    })
+
+    response.data.articles.technology.forEach((article) => {
+      const newArticle = Card(article)
+      newElement.appendChild(newArticle)
+    })
+  })
+  .catch(error => console.log(error))
 }
 
 export { Card, cardAppender }
