@@ -41,7 +41,7 @@ const Card = (article) => {
 
   headDiv.textContent = article.headline
   authorName.textContent = article.authorName
-  imgContainer.src = article.authorPhoto
+  nestedImg.src = article.authorPhoto
 
   headDiv.addEventListener('click', () => {
     console.log(article.headline)
