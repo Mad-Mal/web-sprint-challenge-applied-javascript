@@ -28,17 +28,23 @@ const Card = (article) => {
   let nestedImg = document.createElement('img')
   let authorName = document.createElement('span')
 
+  mainContainer.appendChild(headDiv)
+  mainContainer.appendChild(authorDiv)
+  authorDiv.appendChild(imgContainer)
+  imgContainer.appendChild(nestedImg)
+  authorDiv.appendChild(authorName)
+
   mainContainer.classList.add('card')
   headDiv.classList.add('headline')
   authorDiv.classList.add('author')
   imgContainer.classList.add('img-container')
 
-  headDiv.textContent = `${article[headline]}`
-  authorName.textContent = `${article[authorName]}`
-  imgContainer.src = `${article[authorPhore]}`
+  headDiv.textContent = article.headline
+  authorName.textContent = article.authorName
+  imgContainer.src = article.authorPhoto
 
   headDiv.addEventListener('click', () => {
-    console.log(headDiv)
+    console.log(article.headline)
   })
   return mainContainer;
 }
