@@ -1,3 +1,6 @@
+import axios from "axios"
+
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,6 +20,33 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  let mainContainer = document.createElement('div')
+  let headDiv = document.createElement('div')
+  let authorDiv = document.createElement('div')
+  let imgContainer = document.createElement('div')
+  let nestedImg = document.createElement('img')
+  let authorName = document.createElement('span')
+
+  mainContainer.appendChild(headDiv)
+  mainContainer.appendChild(authorDiv)
+  authorDiv.appendChild(imgContainer)
+  imgContainer.appendChild(nestedImg)
+  authorDiv.appendChild(authorName)
+
+  mainContainer.classList.add('card')
+  headDiv.classList.add('headline')
+  authorDiv.classList.add('author')
+  imgContainer.classList.add('img-container')
+
+  headDiv.textContent = article.headline
+  authorName.textContent = article.authorName
+  nestedImg.src = article.authorPhoto
+
+  headDiv.addEventListener('click', () => {
+    console.log(article.headline)
+  })
+  return mainContainer;
 }
 
 const cardAppender = (selector) => {
@@ -28,6 +58,12 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+  axios.get(`https://lambda-times-api.herokuapp.com/articles`)
+  .then(res => {
+    const newArticles = Card(res.data)
+    document.querySelector(selector).appendChild(newArticles) 
+  })
 }
 
 export { Card, cardAppender }

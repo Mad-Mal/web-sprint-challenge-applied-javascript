@@ -22,7 +22,7 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 
 #### Repository Set Up
 
-- [ ] Create a forked copy of this project.
+- [x] Create a forked copy of this project.
 - [ ] Clone your OWN version of the repository (Not Lambda's by mistake!).
 - [ ] Create a new branch: `git checkout -b <firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
@@ -75,7 +75,12 @@ There are two possible ways to submit this project to Canvas. Lambda Staff will 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the DOM?
+    Document Object Model. It is a bridge between our code and whats on the actual page and it allows us to manipulate and create new elements at will using only JS.
 2. What is an event?
+    An event is something that is happening or has happened on a page such as a click or scroll for example. Something the user does on the page or a specific part of a page
 3. What is an event listener?
+    An event listener is something the coder can setup to "listen" for these events. We can set it up to listen for a click on a particular button so that when they click that button we can say " Hey do this thing since you heard them click that!"
 4. Why would we convert a NodeList into an Array?
+    It will be much easier to use that data/information within our coding and helps keep our code dry that way
 5. What is a component?
+    A smaller peice of code that can be incorpirated into a much larger code base. The main thing to know here is that components are usually dry and reusable so that they can be used multiple times in different places to help us keep our code a lot cleaner
